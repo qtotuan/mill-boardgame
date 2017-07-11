@@ -1,0 +1,189 @@
+.outer-box {
+  border-width: 5px;
+  border-color: black;
+  height: 50vw;
+  width: 50vw;
+  border-style: solid;
+  box-sizing: border-box;
+  position: absolute;
+}
+
+.middle-box {
+  border-width: 5px;
+  border-color: black;
+  border-style: solid;
+  width: 66%;
+  height: 66%;
+  position: relative;
+  margin: auto;
+  top: 17%;
+  box-sizing: border-box;
+}
+
+.inner-box {
+  border-width: 5px;
+  border-color: black;
+  border-style: solid;
+  width: 50%;
+  height: 50%;
+  position: relative;
+  margin: auto;
+  margin-top: 25%;
+  box-sizing: border-box;
+  background-color: white;
+}
+
+.quarter-box-top-left {
+  border-right-width: 5px;
+  border-right-color: black;
+  border-right-style: solid;
+  width: 50%;
+  height: 50%;
+  position: relative;
+  float: left;
+  box-sizing: border-box;
+  margin-left: 2.5px;
+  margin-top: 2.5px;
+}
+
+.quarter-box-bottom-left {
+  border-right-width: 5px;
+  border-right-color: black;
+  border-right-style: solid;
+  width: 50%;
+  height: 48.9%;
+  position: relative;
+  float: left;
+  box-sizing: border-box;
+  margin-left: 2.5px;
+}
+
+.quarter-box-right {
+  border-top-width: 5px;
+  border-top-color: black;
+  border-top-style: solid;
+  width: 40%;
+  height: 50%;
+  position: relative;
+  float: right;
+  box-sizing: border-box;
+  bottom: 5px;
+}
+
+.bottom-border {
+  border-bottom-width: 5px;
+  border-bottom-color: black;
+  border-bottom-style: solid;
+}
+
+.game-container {
+  height: 50vw;
+  width: 50vw;
+  margin-top: 50px;
+  margin-left: 50px;
+}
+
+.node {
+  position: absolute;
+  border-radius: 50%;
+  border-color: black;
+  border-width: 5px;
+  border-style: solid;
+  height: 30px;
+  width: 30px;
+  box-sizing: border-box;
+  background: white;
+}
+
+.player-1-node {
+  background-color: blue;
+}
+
+.player-2-node {
+  background-color: red;
+}
+
+#node-1, #node-4, #node-7 {
+  top: -15px;
+  left: -15px;
+}
+
+#node-2, #node-5 {
+  left: 46%;
+  top: -15px;
+}
+
+#node-3, #node-6 {
+  left: 96%;
+  top: -15px;
+}
+
+#node-8 {
+  left: 38%;
+  top: -15px;
+}
+
+#node-9 {
+  left: 90%;
+  top: -15px;
+}
+
+#node-10 {
+  left: -15px;
+  top: 46%;
+}
+
+#node-11 {
+  left: -15px;
+  top: 44%;
+}
+
+#node-12 {
+  left: -15px;
+  top: 37%;
+}
+
+#node-13 {
+  left: 90%;
+  top: 37%;
+}
+
+#node-14 {
+  left: 96%;
+  top: 44%;
+}
+
+#node-15 {
+  left: 96%;
+  top: 46%;
+}
+
+#node-16 {
+  left: -15px;
+  top: 90%;
+}
+
+#node-17 {
+  left: 38%;
+  top: 90%;
+}
+
+#node-18 {
+  left: 90%;
+  top: 90%;
+}
+
+#node-22, #node-19 {
+  left: -15px;
+  top: 96%;
+}
+
+#node-23, #node-20 {
+  top: 96%;
+  left: 46%;
+}
+
+#node-24, #node-21 {
+  top: 96%;
+  left: 96%;
+}

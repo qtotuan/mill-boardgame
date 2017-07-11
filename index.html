@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Mill Game</title>
+    <link rel="stylesheet" href="css/stylesheet.css">
+    <script
+    src="https://code.jquery.com/jquery-3.2.1.min.js"
+    integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+    crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <div class="game-container">
+      <div class="quarter-box-top-left bottom-border">
+      </div>
+      <div class="quarter-box-bottom-left"></div>
+      <div class="quarter-box-right"></div>
+      <div class="outer-box">
+        <div id="node-1" class="node"></div>
+        <div id="node-2" class="node"></div>
+        <div id="node-3" class="node"></div>
+        <div id="node-10" class="node"></div>
+        <div id="node-15" class="node"></div>
+        <div id="node-22" class="node"></div>
+        <div id="node-23" class="node"></div>
+        <div id="node-24" class="node"></div>
+        <div class="middle-box">
+          <div id="node-4" class="node"></div>
+          <div id="node-5" class="node"></div>
+          <div id="node-6" class="node"></div>
+          <div id="node-11" class="node"></div>
+          <div id="node-14" class="node"></div>
+          <div id="node-19" class="node"></div>
+          <div id="node-20" class="node"></div>
+          <div id="node-21" class="node"></div>
+          <div class="inner-box">
+            <div id="node-7" class="node"></div>
+            <div id="node-8" class="node"></div>
+            <div id="node-9" class="node"></div>
+            <div id="node-12" class="node"></div>
+            <div id="node-13" class="node"></div>
+            <div id="node-16" class="node"></div>
+            <div id="node-17" class="node"></div>
+            <div id="node-18" class="node"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+
+<script type="text/javascript">
+  $(document).ready(function () {
+    $('.node').on('click', function (event) {
+      alert(this.id)
+    })
+  })
+</script>
