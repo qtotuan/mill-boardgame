@@ -2,6 +2,7 @@ class Game {
   constructor(id) {
     this.id = id
     this.players = []
+    this.totalPiecesPlaced = 0
     this.selectedPiece
     this.currentPlayer
     this.currentStatus = {
@@ -32,12 +33,35 @@ class Game {
     }
   }
 
-  main() {
+  promptPlayer(type) {
+    switch(type) {
+      case "turn":
+        $(".messages").text(`${this.currentPlayer.name}, it is your turn`)
+        break
+      case "not empty":
+        $(".messages").text("Chose an empty field")
+        break
+      case "not adjacent":
+        $(".messages").text("Chose an adjacent field")
+        break
+      case "mill error":
+        $(".messages").text("You can't take a piece from a mill!")
+        break
+      case "mill success":
+        $(".messages").text("You may take one of your opponent's pieces!")
+        break
+      case "own piece":
+        $(".messages").text("Please select one of your pieces")
+        break
+      default:
+        break
+      }
 
-  }
+    }
 
   placePiece(nodeId) {
     // Check if field is empty
+
     if (this.currentStatus[nodeId] === null) {
       let piece = new Piece(this.currentPlayer, nodeId)
       if (this.currentPlayer === this.players[0]) {
@@ -46,10 +70,25 @@ class Game {
         $(`#${nodeId}`).addClass('player-2')
       }
       this.currentStatus[nodeId] = this.currentPlayer.name
-      this.currentPlayer.piecesLeft -= 1
+      this.totalPiecesPlaced += 1
       this.switchPlayer()
+      console.log("Current Player is: " + this.currentPlayer.name)
+
+      if (this.totalPiecesPlaced >= 18) {
+        console.log("18 pieces are placed! Switching listeners");
+        removeListeners()
+        addSelectPieceListener()
+      }
     } else {
-      // prompt Player to select empty field
+      this.promptPlayer("not empty")
+    }
+  }
+
+  findPlayerClass(player) {
+    if (this.players[0] === player) {
+      return "player-1"
+    } else {
+      return "player-2"
     }
   }
 
@@ -59,17 +98,11 @@ class Game {
       // set game.selectedPiece to event target nodeId
       this.selectedPiece = nodeId
       // remove current selectPieceListeners, add movePieceListeners
+      removeListeners()
+      addMovePieceListener()
 
     } else {
-      // prompt player that he must select his own pieces
-    }
-  }
-
-  function findPlayerClass(player) {
-    if (this.players[0] === player) {
-      return "player-1"
-    } else {
-      return "player-2"
+      this.promptPlayer("own piece")
     }
   }
 
@@ -77,14 +110,19 @@ class Game {
     // check if node is adjacent and empty
     if (ADJACENT_COMBINATIONS[this.selectedPiece].includes(nodeId) && this.currentStatus[nodeId] === null) {
       // remove color from selected field and update current status
-      $(`#${this.selectedPiece}`).removeClass(findPlayerClass(this.currentPlayer))
+      console.log("Correct adjacent piece selected!");
+      $(`#${this.selectedPiece}`).removeClass(this.findPlayerClass(this.currentPlayer))
+      console.log("Should have removed class from old place");
       this.currentStatus[this.selectedPiece] = null
       // add class to new node (nodeId)
-      $(`#${nodeId}`).addClass(findPlayerClass(this.currentPlayer))
+      $(`#${nodeId}`).addClass(this.findPlayerClass(this.currentPlayer))
       // update currentStatus
       this.currentStatus[nodeId] = this.currentPlayer.name
+      this.switchPlayer()
+      removeListeners()
+      addSelectPieceListener()
     } else {
-      // prompt player to make a valid move
+      this.promptPlayer("not adjacent")
     }
   }
 
@@ -104,24 +142,24 @@ class Game {
     } else {
       this.currentPlayer = this.players[0]
     }
-    console.log(this.currentPlayer);
+    this.promptPlayer("turn")
   }
 
-  isValidMove() {
-    if (player.piecesLeft === 0) {
-      if (isEmptyNode() && isAdjacentNode()) {
-        return true
-      } else {
-        return false
-      }
-    } else {
-      if (isEmptyNode()) {
-        return true
-      } else {
-        return false
-      }
-    }
-  }
+  // isValidMove() {
+  //   if (player.totalPiecesPlaced === 0) {
+  //     if (isEmptyNode() && isAdjacentNode()) {
+  //       return true
+  //     } else {
+  //       return false
+  //     }
+  //   } else {
+  //     if (isEmptyNode()) {
+  //       return true
+  //     } else {
+  //       return false
+  //     }
+  //   }
+  // }
 
   isEmptyNode() {
 

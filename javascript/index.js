@@ -7,6 +7,7 @@ myGame.players.push(player1, player2)
 myGame.currentPlayer = player1
 
 $(function() {
+  myGame.promptPlayer("turn")
 
 })
 
