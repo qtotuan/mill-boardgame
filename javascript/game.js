@@ -1,11 +1,9 @@
 class Game {
   constructor(id) {
     this.id = id
-    this.players = [],
-  }
-
-  currentStatus() {
-    {
+    this.players = []
+    this.currentPlayer
+    this.currentStatus = {
       node1: null,
       node2: null,
       node3: null,
@@ -34,6 +32,27 @@ class Game {
   }
 
 
+  placePiece(nodeId) {
+      let piece = new Piece(this.currentPlayer, nodeId)
+      if (this.currentPlayer === this.players[0]) {
+        $(`#${nodeId}`).addClass('player-1')
+      } else {
+        $(`#${nodeId}`).addClass('player-2')
+      }
+      switchPlayer()
+  }
+
+  capturePiece() {
+
+  }
+
+  switchPlayer() {
+    if (this.currentPlayer === player1) {
+      this.currentPlayer = player2
+    } else {
+      this.currentPlayer = player1
+    }
+  }
 
   isValidMove() {
     if (player.piecesLeft === 0) {

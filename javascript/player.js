@@ -6,13 +6,6 @@ class Player() {
 
   }
 
-  placePiece() {
-
-  }
-
-  capturePiece() {
-
-  }
 
 
 }
