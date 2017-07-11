@@ -14,9 +14,5 @@ class Player() {
 
   }
 
-  isValidMove() {
 
-  }
-
-  
 }

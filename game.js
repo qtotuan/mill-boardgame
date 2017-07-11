@@ -35,9 +35,34 @@ class Game {
 
 
 
+  isValidMove() {
+    if (player.piecesLeft === 0) {
+      if (isEmptyNode() && isAdjacentNode()) {
+        return true
+      } else {
+        return false
+      }
+    } else {
+      if (isEmptyNode()) {
+        return true
+      } else {
+        return false
+      }
+    }
+  }
+
+  isEmptyNode() {
+
+  }
+
+  isAdjacentNode() {
+
+  }
+
   isMill() {
 
   }
+
 
   isWinner() {
 
