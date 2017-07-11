@@ -74,7 +74,7 @@ class Game {
       this.switchPlayer()
       console.log("Current Player is: " + this.currentPlayer.name)
 
-      if (this.totalPiecesPlaced >= 18) {
+      if (this.totalPiecesPlaced >= 5) {
         console.log("18 pieces are placed! Switching listeners");
         removeListeners()
         addSelectPieceListener()
@@ -102,7 +102,7 @@ class Game {
       // remove current selectPieceListeners, add movePieceListeners
       removeListeners()
       addMovePieceListener()
-
+      $('#cancel').show()
     } else {
       this.promptPlayer("own piece")
     }
@@ -131,6 +131,8 @@ class Game {
 
   cancelMovePiece() {
     //remove movePieceListener and add selectPieceListeners
+    $(`#${this.selectedPiece}`).removeClass('selected')
+    this.selectedPiece = null
     removeListeners()
     addSelectPieceListener()
   }

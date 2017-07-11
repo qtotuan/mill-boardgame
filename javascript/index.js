@@ -1,4 +1,4 @@
-addPlacePieceListener()
+
 let myGame = new Game(123)
 let board = new Board(myGame.id)
 let player1 = new Player("Pat")
@@ -8,7 +8,11 @@ myGame.currentPlayer = player1
 
 $(function() {
   myGame.promptPlayer("turn")
-
+  addPlacePieceListener()
+  $('#cancel').on('click', function (event) {
+    myGame.cancelMovePiece()
+  })
+  $('#cancel').hide()
 })
 
 function addPlacePieceListener() {
