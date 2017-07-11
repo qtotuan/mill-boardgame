@@ -97,6 +97,8 @@ class Game {
     if (this.currentStatus[nodeId] === this.currentPlayer.name) {
       // set game.selectedPiece to event target nodeId
       this.selectedPiece = nodeId
+      // add highlight to selected piece
+      $(`#${nodeId}`).addClass('selected')
       // remove current selectPieceListeners, add movePieceListeners
       removeListeners()
       addMovePieceListener()
@@ -112,6 +114,7 @@ class Game {
       // remove color from selected field and update current status
       console.log("Correct adjacent piece selected!");
       $(`#${this.selectedPiece}`).removeClass(this.findPlayerClass(this.currentPlayer))
+      $(`#${this.selectedPiece}`).removeClass('selected')
       console.log("Should have removed class from old place");
       this.currentStatus[this.selectedPiece] = null
       // add class to new node (nodeId)

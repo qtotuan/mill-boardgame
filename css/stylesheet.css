@@ -103,6 +103,16 @@
   background-color: red;
 }
 
+.selected {
+  animation: blink-node 1s infinite;
+}
+
+@-webkit-keyframes blink-node {
+  0%, 50% {
+    background-color: grey;
+  }
+}
+
 #node-1, #node-4, #node-7 {
   top: -15px;
   left: -15px;
