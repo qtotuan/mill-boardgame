@@ -10,6 +10,9 @@
     crossorigin="anonymous"></script>
   </head>
   <body>
+
+    <div class="messages">Messages</div>
+
     <div class="game-container">
       <div class="quarter-box-top-left bottom-border">
       </div>
@@ -46,13 +49,19 @@
         </div>
       </div>
     </div>
+
+    <div class="">
+      <button type="button" name="cancel" id="cancel">Cancel</button>
+    </div>
+
   </body>
 </html>
 
-<script type="text/javascript">
-  $(document).ready(function () {
-    $('.node').on('click', function (event) {
-      alert(this.id)
-    })
-  })
-</script>
+
+<script src="javascript/listeners.js"></script>
+<script src="javascript/board.js"></script>
+<script src="javascript/combinations.js"></script>
+<script src="javascript/game.js"></script>
+<script src="javascript/piece.js"></script>
+<script src="javascript/player.js"></script>
+<script src="javascript/index.js"></script>

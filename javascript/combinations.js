@@ -1,31 +1,29 @@
 const ADJACENT_COMBINATIONS = {
-  {
-    node1: [node2, node10],
-    node2: [node1, node3, node5],
-    node3: [node2, node15],
-    node4: [node11, node5],
-    node5: [node2, node4, node6, node8],
-    node6: [node5, node14],
-    node7: [node8, node12],
-    node8: [node5, node7, node9],
-    node9: [node8, node13],
-    node10: [node1, node11, node22],
-    node11: [node10, node4, node19, node12],
-    node12: [node11, node7, node16],
-    node13: [node9, node18, node14],
-    node14: [node13, node6, node21, node15],
-    node15: [node14, node3, node24],
-    node16: [node12, node17],
-    node17: [node16, node18, node20],
-    node18: [node17, node13],
-    node19: [node11, node20],
-    node20: [node19, node17, node21, node23],
-    node21: [node20, node14]
-    node22: [node10, node23]
-    node23: [node22, node20, node24]
-    node24: [node23, node15]
+    "node-1": ["node-2", "node-10"],
+    "node-2": ["node-1", "node-3", "node-5"],
+    "node-3": ["node-2", "node-15"],
+    "node-4": ["node-11", "node-5"],
+    "node-5": ["node-2", "node-4", "node-6", "node-8"],
+    "node-6": ["node-5", "node-14"],
+    "node-7": ["node-8", "node-12"],
+    "node-8": ["node-5", "node-7", "node-9"],
+    "node-9": ["node-8", "node-13"],
+    "node-10": ["node-1", "node-11", "node-22"],
+    "node-11": ["node-10", "node-4", "node-19", "node-12"],
+    "node-12": ["node-11", "node-7", "node-16"],
+    "node-13": ["node-9", "node-18", "node-14"],
+    "node-14": ["node-13", "node-6", "node-21", "node-15"],
+    "node-15": ["node-14", "node-3", "node-24"],
+    "node-16": ["node-12", "node-17"],
+    "node-17": ["node-16", "node-18", "node-20"],
+    "node-18": ["node-17", "node-13"],
+    "node-19": ["node-11", "node-20"],
+    "node-20": ["node-19", "node-17", "node-21", "node-23"],
+    "node-21": ["node-20", "node-14"],
+    "node-22": ["node-10", "node-23"],
+    "node-23": ["node-22", "node-20", "node-24"],
+    "node-24": ["node-23", "node-15"]
   }
-}
 
 const MILL_COMBINATIONS = [
     // across
