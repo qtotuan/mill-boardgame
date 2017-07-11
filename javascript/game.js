@@ -74,7 +74,7 @@ class Game {
       this.switchPlayer()
       console.log("Current Player is: " + this.currentPlayer.name)
 
-      if (this.totalPiecesPlaced >= 5) {
+      if (this.totalPiecesPlaced >= 6) {
         console.log("18 pieces are placed! Switching listeners");
         removeListeners()
         addSelectPieceListener()
@@ -150,32 +150,15 @@ class Game {
     this.promptPlayer("turn")
   }
 
-  // isValidMove() {
-  //   if (player.totalPiecesPlaced === 0) {
-  //     if (isEmptyNode() && isAdjacentNode()) {
-  //       return true
-  //     } else {
-  //       return false
-  //     }
-  //   } else {
-  //     if (isEmptyNode()) {
-  //       return true
-  //     } else {
-  //       return false
-  //     }
-  //   }
-  // }
-
-  isEmptyNode() {
-
-  }
-
-  isAdjacentNode() {
-
-  }
-
-  isMill() {
-
+  isMill(nodeId) {
+    const nodeToCheck = this.currentStatus[nodeId]
+    return MILL_COMBINATIONS.some(combination => {
+      if (combination.includes(nodeId)) {
+        return combination.every(node => {
+          return this.currentStatus[node] === nodeToCheck && nodeToCheck != null
+        })
+      }
+    })
   }
 
 
