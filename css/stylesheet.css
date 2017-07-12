@@ -80,7 +80,24 @@
   height: 50vw;
   width: 50vw;
   margin-top: 50px;
-  margin-left: 50px;
+  margin-left: 25%;
+}
+
+.controls {
+  clear: both;
+  padding-top: 20px;
+}
+
+@media screen and (min-width: 960px) {
+  .game-container {
+    height: 40vw;
+    width: 40vw;
+  }
+
+  .outer-box {
+    height: 40vw;
+    width: 40vw;
+  }
 }
 
 .node {
