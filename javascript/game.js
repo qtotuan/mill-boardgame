@@ -200,12 +200,12 @@ class Game {
   switchPlayer() {
     if (this.currentPlayer === this.players[0]) {
       this.currentPlayer = this.players[1]
-      $('.player-stats-1').css('opacity', 0.5)
+      $('.player-stats-1').css('opacity', 0.25)
       $('.player-stats-2').css('opacity', 1.0)
     } else {
       this.currentPlayer = this.players[0]
       $('.player-stats-1').css('opacity', 1.0)
-      $('.player-stats-2').css('opacity', 0.5)
+      $('.player-stats-2').css('opacity', 0.25)
     }
     this.promptPlayer("turn")
   }
@@ -261,9 +261,15 @@ class Game {
   }
 
   gameOver() {
-    $('.game-container').empty()
-    $('.game-container').text(`${this.currentPlayer.name} wins!`)
+    $('.game').empty()
+    $('.game').append(`<div class='winner'>${this.currentPlayer.name} wins!</div>`)
+    $('.buttons').empty()
+    $('.buttons').append('<button class="btn play-again">Play Again</button>')
     console.log(`${this.currentPlayer.name} wins!`)
+  }
+
+  playAgain() {
+    window.location.reload()
   }
 
   showPlayerPieces() {

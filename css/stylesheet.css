@@ -3,6 +3,23 @@ body {
   background-color: rgb(255, 245, 158);
 }
 
+.winner {
+  font-size: 50px;
+  margin-top: 10%;
+  animation: blink-winner 0.5s 3;
+  color: red;
+}
+
+@-webkit-keyframes blink-winner {
+  0%, 50% {
+    color: rgb(255, 245, 158);
+  }
+}
+
+.play-again {
+  margin-top: 10%;
+}
+
 .outer-box {
   border-width: 5px;
   border-color: black;
@@ -310,5 +327,5 @@ body {
 }
 
 .buttons {
-  margin-top: 20px;
+  margin-top: 30px;
 }

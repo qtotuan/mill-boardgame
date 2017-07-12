@@ -1,4 +1,3 @@
-
 let myGame = new Game(123)
 let board = new Board(myGame.id)
 let player1 = new Player("Pat")
@@ -14,6 +13,7 @@ $(function() {
     myGame.cancelMovePiece()
   })
   $('#cancel').hide()
+  addPlayAgainListener()
 })
 
 function addPlacePieceListener() {
@@ -46,4 +46,10 @@ function addCapturePieceListener() {
 
 function removeListeners() {
   $('.node').off("click")
+}
+
+function addPlayAgainListener() {
+  $('.buttons').on("click", ".play-again", function (event) {
+    myGame.playAgain()
+  })
 }
