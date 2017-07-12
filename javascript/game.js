@@ -139,6 +139,11 @@ class Game {
         return
       }
 
+      if (this.isWinner()) {
+        this.gameOver()
+        return
+      }
+
       this.switchPlayer()
 
       addSelectPieceListener()
@@ -161,12 +166,19 @@ class Game {
       this.currentPlayer.capturedPieces++
       $(`#${nodeId}`).removeClass("player-1 player-2")
 
+      if (this.isWinner()) {
+        this.gameOver()
+        return
+      }
+
       if (this.totalPiecesPlaced < 6) {
         addPlacePieceListener()
       } else {
         addSelectPieceListener()
       }
+
       this.switchPlayer()
+
     } else if (this.isMill(nodeId) && this.currentStatus[nodeId] != this.currentPlayer.name) {
       this.promptPlayer("mill error")
     } else {
@@ -196,12 +208,34 @@ class Game {
 
 
   isWinner() {
+    let twoPiecesLeft = this.players.some(player => {
+      return player.capturedPieces >= 1
+    })
 
+    let currentPlayersPieces = []
+    for (let node in this.currentStatus) {
+      if (this.currentStatus[node] === this.currentPlayer.name) {
+        currentPlayersPieces.push(node)
+      }
+    }
+
+    let noMoves = !currentPlayersPieces.some(piece => {
+      return ADJACENT_COMBINATIONS[piece].some(adjacentNode => {
+        return this.currentStatus[adjacentNode] === null
+      })
+    })
+
+    if ((twoPiecesLeft || noMoves) && myGame.totalPiecesPlaced >= 6) {
+      return true
+    } else {
+      return false
+    }
   }
 
-  isGameOver() {
-
+  gameOver() {
+    $('.game-container').empty()
+    $('.game-container').text(`${this.currentPlayer.name} wins!`)
+    console.log(`${this.currentPlayer.name} wins!`)
   }
-
 
 }
