@@ -124,6 +124,10 @@
   animation: blink-node 1s infinite;
 }
 
+.selected-mill {
+  animation: blink-node 1s 3;
+}
+
 @-webkit-keyframes blink-node {
   0%, 50% {
     background-color: grey;

@@ -83,6 +83,11 @@ class Game {
       }
 
       this.switchPlayer()
+
+      if (this.isWinner()) {
+        this.gameOver()
+      }
+
       console.log("Current Player is: " + this.currentPlayer.name)
 
       if (this.totalPiecesPlaced >= 6) {
@@ -199,13 +204,25 @@ class Game {
     const nodeToCheck = this.currentStatus[nodeId]
     return MILL_COMBINATIONS.some(combination => {
       if (combination.includes(nodeId)) {
-        return combination.every(node => {
+        let millExists = combination.every(node => {
           return this.currentStatus[node] === nodeToCheck && nodeToCheck != null
         })
+        if (millExists) {
+          this.blinkMill(combination)
+        }
+        return millExists
       }
     })
   }
 
+  blinkMill(combination) {
+    combination.forEach( nodeId => {
+      $(`#${nodeId}`).addClass('selected-mill')
+      $(`#${nodeId}`).on("webkitAnimationEnd oanimationend msAnimationEnd animationend", function() {
+        $(this).removeClass("selected-mill")
+      })
+    })
+  }
 
   isWinner() {
     let twoPiecesLeft = this.players.some(player => {
