@@ -53,6 +53,9 @@ class Game {
       case "own piece":
         $(".messages").text("Please select one of your pieces")
         break
+      case "opponent piece":
+        $(".messages").text("Please select an opponent's piece")
+        break
       default:
         break
       }
@@ -71,12 +74,19 @@ class Game {
       }
       this.currentStatus[nodeId] = this.currentPlayer.name
       this.totalPiecesPlaced += 1
+
+      if (this.isMill(nodeId)) {
+        this.promptPlayer("mill success")
+        console.log('Entering capturePiece mode');
+        addCapturePieceListener()
+        return
+      }
+
       this.switchPlayer()
       console.log("Current Player is: " + this.currentPlayer.name)
 
       if (this.totalPiecesPlaced >= 6) {
         console.log("18 pieces are placed! Switching listeners");
-        removeListeners()
         addSelectPieceListener()
       }
     } else {
@@ -100,7 +110,7 @@ class Game {
       // add highlight to selected piece
       $(`#${nodeId}`).addClass('selected')
       // remove current selectPieceListeners, add movePieceListeners
-      removeListeners()
+
       addMovePieceListener()
       $('#cancel').show()
     } else {
@@ -121,8 +131,16 @@ class Game {
       $(`#${nodeId}`).addClass(this.findPlayerClass(this.currentPlayer))
       // update currentStatus
       this.currentStatus[nodeId] = this.currentPlayer.name
+
+      if (this.isMill(nodeId)) {
+        this.promptPlayer("mill success")
+        console.log('Entering capturePiece mode');
+        addCapturePieceListener()
+        return
+      }
+
       this.switchPlayer()
-      removeListeners()
+
       addSelectPieceListener()
     } else {
       this.promptPlayer("not adjacent")
@@ -133,12 +151,27 @@ class Game {
     //remove movePieceListener and add selectPieceListeners
     $(`#${this.selectedPiece}`).removeClass('selected')
     this.selectedPiece = null
-    removeListeners()
+
     addSelectPieceListener()
   }
 
-  capturePiece() {
+  capturePiece(nodeId) {
+    if (this.currentStatus[nodeId] != this.currentPlayer.name && !this.isMill(nodeId) && this.currentStatus[nodeId] != null) {
+      this.currentStatus[nodeId] = null
+      this.currentPlayer.capturedPieces++
+      $(`#${nodeId}`).removeClass("player-1 player-2")
 
+      if (this.totalPiecesPlaced < 6) {
+        addPlacePieceListener()
+      } else {
+        addSelectPieceListener()
+      }
+      this.switchPlayer()
+    } else if (this.isMill(nodeId) && this.currentStatus[nodeId] != this.currentPlayer.name) {
+      this.promptPlayer("mill error")
+    } else {
+      this.promptPlayer("opponent piece")
+    }
   }
 
   switchPlayer() {

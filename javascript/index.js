@@ -16,20 +16,30 @@ $(function() {
 })
 
 function addPlacePieceListener() {
+    removeListeners()
     $('.node').on('click', function (event) {
       myGame.placePiece(this.id)
     })
 }
 
 function addSelectPieceListener() {
+    removeListeners()
     $('.node').on('click', function (event) {
       myGame.selectPiece(this.id)
     })
 }
 
 function addMovePieceListener() {
+    removeListeners()
     $('.node').on('click', function (event) {
       myGame.movePiece(this.id)
+    })
+}
+
+function addCapturePieceListener() {
+    removeListeners()
+    $('.node').on('click', function (event) {
+      myGame.capturePiece(this.id)
     })
 }
 
