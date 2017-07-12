@@ -118,8 +118,13 @@
   left: -15px;
 }
 
-#node-2, #node-5 {
+#node-2 {
   left: 46%;
+  top: -15px;
+}
+
+#node-5 {
+  left: 44%;
   top: -15px;
 }
 
@@ -188,9 +193,14 @@
   top: 96%;
 }
 
-#node-23, #node-20 {
+#node-23 {
   top: 96%;
   left: 46%;
+}
+
+#node-20 {
+  top: 96%;
+  left: 44%;
 }
 
 #node-24, #node-21 {
