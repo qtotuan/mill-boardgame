@@ -80,6 +80,8 @@
   height: 300px;
   width: 300px;
   margin-top: 50px;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 .controls {
@@ -232,6 +234,7 @@
   border-width: 3px;
   border-radius: 20px;
   border-style: solid;
+  margin-bottom: 20px;
 }
 
 .player-stats-1 .player-name {
@@ -251,6 +254,8 @@
   border-style: solid;
   width: 30px;
   height: 30px;
+  margin: auto;
+  margin-bottom: 3px;
 }
 
 .player-2-piece {
@@ -260,6 +265,12 @@
   border-style: solid;
   width: 30px;
   height: 30px;
+  margin: auto;
+  margin-bottom: 3px;
+}
+
+.buttons {
+  margin-top: 20px;
 }
 
 @media(min-width: 480px) {
