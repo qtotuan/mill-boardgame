@@ -34,27 +34,28 @@ class Game {
   }
 
   promptPlayer(type) {
+      $(".messages").empty()
     switch(type) {
       case "turn":
-        $(".messages").text(`${this.currentPlayer.name}, it is your turn`)
+        $(".messages").append(`<div class="message-content typewriter">${this.currentPlayer.name}, it is your turn</div>`)
         break
       case "not empty":
-        $(".messages").text("Chose an empty field")
+        $(".messages").append("<div class='message-content typewriter'>Chose an empty field</div>")
         break
       case "not adjacent":
-        $(".messages").text("Chose an adjacent field")
+        $(".messages").append("<div class='message-content typewriter'>Chose an adjacent field</div>")
         break
       case "mill error":
-        $(".messages").text("You can't take a piece from a mill!")
+        $(".messages").append("<div class='message-content typewriter'>You can't take a piece from a mill!</div>")
         break
       case "mill success":
-        $(".messages").text("You may take one of your opponent's pieces!")
+        $(".messages").append("<div class='message-content typewriter'>You may take one of your opponent's pieces!</div>")
         break
       case "own piece":
-        $(".messages").text("Please select one of your pieces")
+        $(".messages").append("<div class='message-content typewriter'>Please select one of your pieces</div>")
         break
       case "opponent piece":
-        $(".messages").text("Please select an opponent's piece")
+        $(".messages").append("<div class='message-content typewriter'>Please select an opponent's piece</div>")
         break
       default:
         break
@@ -199,8 +200,12 @@ class Game {
   switchPlayer() {
     if (this.currentPlayer === this.players[0]) {
       this.currentPlayer = this.players[1]
+      $('.player-stats-1').css('opacity', 0.5)
+      $('.player-stats-2').css('opacity', 1.0)
     } else {
       this.currentPlayer = this.players[0]
+      $('.player-stats-1').css('opacity', 1.0)
+      $('.player-stats-2').css('opacity', 0.5)
     }
     this.promptPlayer("turn")
   }
@@ -227,6 +232,7 @@ class Game {
         $(this).removeClass("selected-mill")
       })
     })
+    $('.messages').addClass('blink-messages')
   }
 
   isWinner() {

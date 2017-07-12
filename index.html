@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>Mill Game</title>
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P|VT323" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="css/stylesheet.css">
     <script
@@ -14,10 +15,12 @@
 
     <div class="container text-center">
       <!-- title -->
-      <div class="row title"><h1>MILL GAME</h1></div>
+      <div class="row title"><h1 class="blink-title">MILL GAME</h1></div>
 
       <!-- messages -->
-      <div class="row messages">Messages</div>
+      <div class="row messages">
+        
+      </div>
 
       <!-- game -->
       <div class="row game">
@@ -75,7 +78,7 @@
         </div>
 
         <!-- Player 2 Stats -->
-        <div class="col-xs-3 player-stats-2">
+        <div class="col-xs-3 player-stats-2" style="opacity:0.5;">
           <div class="row">
             <div class="col-xs-12 player-name">Player 2</div>
           </div>
@@ -90,7 +93,7 @@
     <!-- buttons -->
     <div class="row buttons">
       <div class="col-xs-12">
-        <button class="btn btn-primary" type="button" name="cancel" id="cancel">Cancel</button>
+        <button class="btn btn-default" type="button" name="cancel" id="cancel">Cancel</button>
       </div>
     </div>
 

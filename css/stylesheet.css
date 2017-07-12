@@ -1,3 +1,8 @@
+body {
+  font-family: 'Press Start 2P', cursive;
+  background-color: rgb(255, 245, 158);
+}
+
 .outer-box {
   border-width: 5px;
   border-color: black;
@@ -30,7 +35,7 @@
   margin: auto;
   margin-top: 25%;
   box-sizing: border-box;
-  background-color: white;
+  background-color: rgb(255, 245, 158);;
 }
 
 .quarter-box-top-left {
@@ -110,7 +115,7 @@
   height: 30px;
   width: 30px;
   box-sizing: border-box;
-  background: white;
+  background: #cac7c7;
 }
 
 .player-1 {
@@ -129,9 +134,44 @@
   animation: blink-node 1s 3;
 }
 
+.blink-title {
+  animation: blink-title 0.5s 3;
+}
+
+@-webkit-keyframes blink-title {
+  0%, 50% {
+    color: rgb(255, 245, 158);
+  }
+}
+
+.blink-messages {
+  animation: blink-messages 1s 3;
+}
+
+@-webkit-keyframes blink-messages {
+  0%, 50% {
+    background-color: #dd97e8;
+  }
+}
+
+.typewriter {
+  overflow: hidden; /* Ensures the content is not revealed until the animation */
+  white-space: nowrap; /* Keeps the content on a single line */
+  margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+  letter-spacing: .15em; /* Adjust as needed */
+  animation:
+    typing 1.0s steps(40, end)
+}
+
+/* The typing effect */
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
 @-webkit-keyframes blink-node {
   0%, 50% {
-    background-color: grey;
+    background-color: #cac7c7;
   }
 }
 
@@ -239,12 +279,12 @@
 
 .player-stats-1 .player-name {
   color: blue;
-  font-size: 30px;
+  font-size: 22px;
 }
 
 .player-stats-2 .player-name {
   color: red;
-  font-size: 30px;
+  font-size: 22px;
 }
 
 .player-1-piece {
