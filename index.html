@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>Mill Game</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="css/stylesheet.css">
     <script
     src="https://code.jquery.com/jquery-3.2.1.min.js"
@@ -11,48 +12,92 @@
   </head>
   <body>
 
-    <div class="messages">Messages</div>
+    <div class="container text-center">
+      <!-- title -->
+      <div class="row title"><h1>MILL GAME</h1></div>
 
-    <div class="game-container">
-      <div class="quarter-box-top-left bottom-border">
-      </div>
-      <div class="quarter-box-bottom-left"></div>
-      <div class="quarter-box-right"></div>
-      <div class="outer-box">
-        <div id="node-1" class="node"></div>
-        <div id="node-2" class="node"></div>
-        <div id="node-3" class="node"></div>
-        <div id="node-10" class="node"></div>
-        <div id="node-15" class="node"></div>
-        <div id="node-22" class="node"></div>
-        <div id="node-23" class="node"></div>
-        <div id="node-24" class="node"></div>
-        <div class="middle-box">
-          <div id="node-4" class="node"></div>
-          <div id="node-5" class="node"></div>
-          <div id="node-6" class="node"></div>
-          <div id="node-11" class="node"></div>
-          <div id="node-14" class="node"></div>
-          <div id="node-19" class="node"></div>
-          <div id="node-20" class="node"></div>
-          <div id="node-21" class="node"></div>
-          <div class="inner-box">
-            <div id="node-7" class="node"></div>
-            <div id="node-8" class="node"></div>
-            <div id="node-9" class="node"></div>
-            <div id="node-12" class="node"></div>
-            <div id="node-13" class="node"></div>
-            <div id="node-16" class="node"></div>
-            <div id="node-17" class="node"></div>
-            <div id="node-18" class="node"></div>
+      <!-- messages -->
+      <div class="row messages">Messages</div>
+
+      <!-- game -->
+      <div class="row game">
+
+        <!-- Player 1 Stats -->
+        <div class="col-xs-3 player-stats-1">
+          <div class="row">
+            <div class="col-xs-12 player-name">Player 1</div>
+          </div>
+          <div class="row pieces">
+            <div class="col-xs-6 captured-pieces">Captured Pieces</div>
+            <div class="col-xs-6 own-pieces">Own Pieces</div>
           </div>
         </div>
-      </div>
-      <div class="controls">
-        <button type="button" name="cancel" id="cancel">Cancel</button>
-      </div>
-    </div>
 
+
+        <!-- Board -->
+        <div class="col-xs-6">
+          <div class="game-container">
+            <div class="quarter-box-top-left bottom-border">
+            </div>
+            <div class="quarter-box-bottom-left"></div>
+            <div class="quarter-box-right"></div>
+            <div class="outer-box">
+              <div id="node-1" class="node"></div>
+              <div id="node-2" class="node"></div>
+              <div id="node-3" class="node"></div>
+              <div id="node-10" class="node"></div>
+              <div id="node-15" class="node"></div>
+              <div id="node-22" class="node"></div>
+              <div id="node-23" class="node"></div>
+              <div id="node-24" class="node"></div>
+              <div class="middle-box">
+                <div id="node-4" class="node"></div>
+                <div id="node-5" class="node"></div>
+                <div id="node-6" class="node"></div>
+                <div id="node-11" class="node"></div>
+                <div id="node-14" class="node"></div>
+                <div id="node-19" class="node"></div>
+                <div id="node-20" class="node"></div>
+                <div id="node-21" class="node"></div>
+                <div class="inner-box">
+                  <div id="node-7" class="node"></div>
+                  <div id="node-8" class="node"></div>
+                  <div id="node-9" class="node"></div>
+                  <div id="node-12" class="node"></div>
+                  <div id="node-13" class="node"></div>
+                  <div id="node-16" class="node"></div>
+                  <div id="node-17" class="node"></div>
+                  <div id="node-18" class="node"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Player 2 Stats -->
+        <div class="col-xs-3 player-stats-2">
+          <div class="row">
+            <div class="col-xs-12 player-name">Player 2</div>
+          </div>
+          <div class="row pieces">
+            <div class="col-xs-6 own-pieces">Own Pieces</div>
+            <div class="col-xs-6 captured-pieces">Captured Pieces</div>
+          </div>
+        </div>
+
+    </div><!-- game row -->
+
+
+  </div><!--  container -->
+
+
+
+      <!-- buttons -->
+      <div class="row buttons">
+        <button class="btn btn-primary" type="button" name="cancel" id="cancel">Cancel</button>
+      </div>
+
+    </div><!--  container end -->
 
   </body>
 </html>

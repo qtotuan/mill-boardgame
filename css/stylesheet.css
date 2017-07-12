@@ -1,8 +1,8 @@
 .outer-box {
   border-width: 5px;
   border-color: black;
-  height: 50vw;
-  width: 50vw;
+  height: 300px;
+  width: 300px;
   border-style: solid;
   box-sizing: border-box;
   position: absolute;
@@ -77,10 +77,9 @@
 }
 
 .game-container {
-  height: 50vw;
-  width: 50vw;
+  height: 300px;
+  width: 300px;
   margin-top: 50px;
-  margin-left: 25%;
 }
 
 .controls {
@@ -95,8 +94,8 @@
   }
 
   .outer-box {
-    height: 40vw;
-    width: 40vw;
+    height: 100%;
+    width: 100%;
   }
 }
 
@@ -227,4 +226,45 @@
 #node-24, #node-21 {
   top: 96%;
   left: 96%;
+}
+
+.messages {
+  border-width: 3px;
+  border-radius: 20px;
+  border-style: solid;
+}
+
+.player-stats-1 .player-name {
+  color: blue;
+  font-size: 30px;
+}
+
+.player-stats-2 .player-name {
+  color: red;
+  font-size: 30px;
+}
+
+.player-1-piece {
+  border-radius: 50%;
+  background-color: blue;
+  border-width: 5px;
+  border-style: solid;
+  width: 30px;
+  height: 30px;
+}
+
+.player-2-piece {
+  border-radius: 50%;
+  background-color: red;
+  border-width: 5px;
+  border-style: solid;
+  width: 30px;
+  height: 30px;
+}
+
+@media(min-width: 480px) {
+  .flex {
+    display: flex;
+    horizontal-align: middle;
+  }
 }

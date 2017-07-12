@@ -73,7 +73,10 @@ class Game {
         $(`#${nodeId}`).addClass('player-2')
       }
       this.currentStatus[nodeId] = this.currentPlayer.name
-      this.totalPiecesPlaced += 1
+      this.totalPiecesPlaced++
+      this.currentPlayer.piecesLeftToPlace--
+
+      this.showPlayerPieces()
 
       if (this.isMill(nodeId)) {
         this.promptPlayer("mill success")
@@ -171,6 +174,8 @@ class Game {
       this.currentPlayer.capturedPieces++
       $(`#${nodeId}`).removeClass("player-1 player-2")
 
+      this.showPlayerPieces()
+
       if (this.isWinner()) {
         this.gameOver()
         return
@@ -254,5 +259,31 @@ class Game {
     $('.game-container').text(`${this.currentPlayer.name} wins!`)
     console.log(`${this.currentPlayer.name} wins!`)
   }
+
+  showPlayerPieces() {
+    $(".own-pieces").empty()
+    $(".captured-pieces").empty()
+
+    this.players.forEach( (player, index) => {
+      // show own pieces
+      for (let i = 0; i < player.piecesLeftToPlace; i++) {
+        if (index === 0) {
+          $(".player-stats-1 .own-pieces").append("<div class='player-1-piece'></div>")
+        } else if (index === 1) {
+          $(".player-stats-2 .own-pieces").append("<div class='player-2-piece'></div>")
+        }
+      }
+
+      // show captured pieces
+      for (let i = 0; i < player.capturedPieces; i++) {
+        if (index === 0) {
+          $(".player-stats-1 .captured-pieces").append("<div class='player-2-piece'></div>")
+        } else if (index === 1) {
+          $(".player-stats-2 .captured-pieces").append("<div class='player-1-piece'></div>")
+        }
+      }
+    })
+  }
+
 
 }

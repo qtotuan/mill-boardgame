@@ -7,6 +7,7 @@ myGame.players.push(player1, player2)
 myGame.currentPlayer = player1
 
 $(function() {
+  myGame.showPlayerPieces()
   myGame.promptPlayer("turn")
   addPlacePieceListener()
   $('#cancel').on('click', function (event) {
