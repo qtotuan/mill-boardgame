@@ -1,6 +1,7 @@
 body {
   font-family: 'Press Start 2P', cursive;
   background-color: rgb(255, 245, 158);
+  min-width: 750px;
 }
 
 .winner {
