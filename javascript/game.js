@@ -142,6 +142,7 @@ class Game {
       this.currentStatus[nodeId] = this.currentPlayer.name
 
       if (this.isMill(nodeId)) {
+        $('#cancel').hide()
         this.promptPlayer("mill success")
         console.log('Entering capturePiece mode');
         addCapturePieceListener()
@@ -264,15 +265,21 @@ class Game {
   }
 
   gameOver() {
-    $('.game').empty()
-    $('.game').append(`<div class='winner'>${this.currentPlayer.name} wins!</div>`)
-    $('.buttons').empty()
-    $('.buttons').append('<button class="btn play-again">Play Again</button>')
+    $('.game-page').hide()
+    $('.winner-page .winner-message').html(`<div class='winner'>${this.currentPlayer.name} wins!</div>`)
+    $('.winner-page').show()
     console.log(`${this.currentPlayer.name} wins!`)
   }
 
   playAgain() {
-    window.location.reload()
+    debugger
+    $('.node').removeClass('player-1 player-2')
+    $('.messages').removeClass('blink-messages')
+    $('#cancel').hide()
+    removeListeners()
+    addPlacePieceListener()
+    $('.winner-page').hide()
+    startNewGame()
   }
 
   showPlayerPieces() {

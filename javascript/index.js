@@ -1,4 +1,4 @@
-let myGame = new Game(123)
+let myGame = new Game()
 let board = new Board(myGame.id)
 
 $(function() {
@@ -12,8 +12,16 @@ $(function() {
 })
 
 function startNewGame() {
+  myGame = new Game()
   let player1Name = $('input[name="player-1-name"]').val()
   let player2Name = $('input[name="player-2-name"]').val()
+  if (player1Name == "" || player2Name == "") {
+    alert('Player names cannot be blank!')
+    return
+  } else if (player1Name == player2Name) {
+    alert('Player names must be different!')
+    return
+  }
   let player1 = new Player(player1Name)
   let player2 = new Player(player2Name)
   myGame.players.push(player1, player2)
@@ -57,7 +65,7 @@ function removeListeners() {
 }
 
 function addPlayAgainListener() {
-  $('.buttons').on("click", ".play-again", function (event) {
+  $('.winner-page').on("click", ".play-again", function (event) {
     myGame.playAgain()
   })
 }
