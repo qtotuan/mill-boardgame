@@ -1,8 +1,9 @@
-let myGame = new Game()
-let board = new Board(myGame.id)
+let myGame
+let player1Name
+let player2Name
 
 $(function() {
-  $('button[name="new-game"]').on('click', startNewGame)
+  $('button[name="new-game"]').on('click', createNewGame)
   addPlacePieceListener()
   $('#cancel').on('click', function (event) {
     myGame.cancelMovePiece()
@@ -11,10 +12,9 @@ $(function() {
   addPlayAgainListener()
 })
 
-function startNewGame() {
-  myGame = new Game()
-  let player1Name = $('input[name="player-1-name"]').val()
-  let player2Name = $('input[name="player-2-name"]').val()
+function createNewGame() {
+  player1Name = $('input[name="player-1-name"]').val()
+  player2Name = $('input[name="player-2-name"]').val()
   if (player1Name == "" || player2Name == "") {
     alert('Player names cannot be blank!')
     return
@@ -22,6 +22,11 @@ function startNewGame() {
     alert('Player names must be different!')
     return
   }
+  createGame(startNewGame)
+}
+
+function startNewGame(gameData) {
+  myGame = new Game(gameData)
   let player1 = new Player(player1Name)
   let player2 = new Player(player2Name)
   myGame.players.push(player1, player2)

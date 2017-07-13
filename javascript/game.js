@@ -1,6 +1,6 @@
 class Game {
-  constructor(id) {
-    this.id = id
+  constructor(gameData) {
+    this.id = gameData.id
     this.players = []
     this.totalPiecesPlaced = 0
     this.selectedPiece
@@ -74,6 +74,7 @@ class Game {
         $(`#${nodeId}`).addClass('player-2')
       }
       this.currentStatus[nodeId] = this.currentPlayer.name
+      updateGame(this, this.renderGame.bind(this))
       this.totalPiecesPlaced++
       this.currentPlayer.piecesLeftToPlace--
 
@@ -132,19 +133,20 @@ class Game {
     if (ADJACENT_COMBINATIONS[this.selectedPiece].includes(nodeId) && this.currentStatus[nodeId] === null) {
       // remove color from selected field and update current status
       console.log("Correct adjacent piece selected!");
-      $(`#${this.selectedPiece}`).removeClass(this.findPlayerClass(this.currentPlayer))
-      $(`#${this.selectedPiece}`).removeClass('selected')
+      // $(`#${this.selectedPiece}`).removeClass(this.findPlayerClass(this.currentPlayer))
+      // $(`#${this.selectedPiece}`).removeClass('selected')
       console.log("Should have removed class from old place");
       this.currentStatus[this.selectedPiece] = null
       // add class to new node (nodeId)
-      $(`#${nodeId}`).addClass(this.findPlayerClass(this.currentPlayer))
+      // $(`#${nodeId}`).addClass(this.findPlayerClass(this.currentPlayer))
       // update currentStatus
       this.currentStatus[nodeId] = this.currentPlayer.name
-
+      updateGame(this, this.renderGame.bind(this))
       if (this.isMill(nodeId)) {
         $('#cancel').hide()
         this.promptPlayer("mill success")
         console.log('Entering capturePiece mode');
+        this.renderGame()
         addCapturePieceListener()
         return
       }
@@ -158,7 +160,7 @@ class Game {
 
       addSelectPieceListener()
       $('#cancel').hide()
-
+      this.renderGame()
     } else {
       this.promptPlayer("not adjacent")
     }
@@ -176,6 +178,7 @@ class Game {
   capturePiece(nodeId) {
     if (this.currentStatus[nodeId] != this.currentPlayer.name && !this.isMill(nodeId) && this.currentStatus[nodeId] != null) {
       this.currentStatus[nodeId] = null
+      updateGame(this, this.renderGame.bind(this))
       this.currentPlayer.capturedPieces++
       $(`#${nodeId}`).removeClass("player-1 player-2")
 
@@ -204,13 +207,10 @@ class Game {
   switchPlayer() {
     if (this.currentPlayer === this.players[0]) {
       this.currentPlayer = this.players[1]
-      $('.player-stats-1').css('opacity', 0.25)
-      $('.player-stats-2').css('opacity', 1.0)
     } else {
       this.currentPlayer = this.players[0]
-      $('.player-stats-1').css('opacity', 1.0)
-      $('.player-stats-2').css('opacity', 0.25)
     }
+    this.renderGame()
     this.promptPlayer("turn")
   }
 
@@ -272,14 +272,13 @@ class Game {
   }
 
   playAgain() {
-    debugger
     $('.node').removeClass('player-1 player-2')
     $('.messages').removeClass('blink-messages')
     $('#cancel').hide()
     removeListeners()
     addPlacePieceListener()
     $('.winner-page').hide()
-    startNewGame()
+    createNewGame()
   }
 
   showPlayerPieces() {
@@ -307,5 +306,32 @@ class Game {
     })
   }
 
+  renderGame() {
+    this.renderNodes()
+    this.renderPlayerStats()
+  }
 
+  renderNodes() {
+    for (let nodeId in this.currentStatus) {
+      if (this.currentStatus[nodeId] === this.players[0].name) {
+        $(`#${nodeId}`).addClass('player-1')
+      } else if (this.currentStatus[nodeId] === this.players[1].name) {
+        $(`#${nodeId}`).addClass('player-2')
+      } else {
+        $(`#${nodeId}`).removeClass('player-1 player-2')
+      }
+      $('.node').removeClass('selected')
+    }
+  }
+
+  renderPlayerStats() {
+    this.showPlayerPieces()
+    if (this.currentPlayer === this.players[0]) {
+      $('.player-stats-1').css('opacity', 0.25)
+      $('.player-stats-2').css('opacity', 1.0)
+    } else {
+      $('.player-stats-1').css('opacity', 1.0)
+      $('.player-stats-2').css('opacity', 0.25)
+    }
+  }
 }
