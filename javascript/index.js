@@ -1,13 +1,8 @@
 let myGame = new Game(123)
 let board = new Board(myGame.id)
-let player1 = new Player("Pat")
-let player2 = new Player("Quynh")
-myGame.players.push(player1, player2)
-myGame.currentPlayer = player1
 
 $(function() {
-  myGame.showPlayerPieces()
-  myGame.promptPlayer("turn")
+  $('button[name="new-game"]').on('click', startNewGame)
   addPlacePieceListener()
   $('#cancel').on('click', function (event) {
     myGame.cancelMovePiece()
@@ -15,6 +10,19 @@ $(function() {
   $('#cancel').hide()
   addPlayAgainListener()
 })
+
+function startNewGame() {
+  let player1Name = $('input[name="player-1-name"]').val()
+  let player2Name = $('input[name="player-2-name"]').val()
+  let player1 = new Player(player1Name)
+  let player2 = new Player(player2Name)
+  myGame.players.push(player1, player2)
+  myGame.currentPlayer = player1
+  $('.start-page').hide()
+  $('.game-page').show()
+  myGame.showPlayerPieces()
+  myGame.promptPlayer("turn")
+}
 
 function addPlacePieceListener() {
     removeListeners()

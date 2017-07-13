@@ -156,12 +156,15 @@ class Game {
       this.switchPlayer()
 
       addSelectPieceListener()
+      $('#cancel').hide()
+
     } else {
       this.promptPlayer("not adjacent")
     }
   }
 
   cancelMovePiece() {
+    $('#cancel').hide()
     //remove movePieceListener and add selectPieceListeners
     $(`#${this.selectedPiece}`).removeClass('selected')
     this.selectedPiece = null
