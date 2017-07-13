@@ -95,13 +95,14 @@ class Game {
 
       console.log("Current Player is: " + this.currentPlayer.name)
 
-      if (this.totalPiecesPlaced >= 6) {
+      if (this.totalPiecesPlaced >= 18) {
         console.log("18 pieces are placed! Switching listeners");
         addSelectPieceListener()
       }
     } else {
       this.promptPlayer("not empty")
     }
+    this.renderGame()
   }
 
   findPlayerClass(player) {
@@ -189,7 +190,7 @@ class Game {
         return
       }
 
-      if (this.totalPiecesPlaced < 6) {
+      if (this.totalPiecesPlaced < 18) {
         addPlacePieceListener()
       } else {
         addSelectPieceListener()
@@ -241,7 +242,7 @@ class Game {
 
   isWinner() {
     let twoPiecesLeft = this.players.some(player => {
-      return player.capturedPieces >= 1
+      return player.capturedPieces >= 7
     })
 
     let currentPlayersPieces = []
@@ -257,7 +258,7 @@ class Game {
       })
     })
 
-    if ((twoPiecesLeft || noMoves) && myGame.totalPiecesPlaced >= 6) {
+    if ((twoPiecesLeft || noMoves) && myGame.totalPiecesPlaced >= 18) {
       return true
     } else {
       return false
@@ -327,11 +328,11 @@ class Game {
   renderPlayerStats() {
     this.showPlayerPieces()
     if (this.currentPlayer === this.players[0]) {
-      $('.player-stats-1').css('opacity', 0.25)
-      $('.player-stats-2').css('opacity', 1.0)
-    } else {
       $('.player-stats-1').css('opacity', 1.0)
       $('.player-stats-2').css('opacity', 0.25)
+    } else {
+      $('.player-stats-1').css('opacity', 0.25)
+      $('.player-stats-2').css('opacity', 1.0)
     }
   }
 }
