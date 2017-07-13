@@ -89,9 +89,9 @@ class Game {
 
       this.switchPlayer()
 
-      if (this.isWinner()) {
-        this.gameOver()
-      }
+      // if (this.isWinner()) {
+      //   this.gameOver()
+      // }
 
       console.log("Current Player is: " + this.currentPlayer.name)
 
@@ -152,10 +152,10 @@ class Game {
         return
       }
 
-      if (this.isWinner()) {
-        this.gameOver()
-        return
-      }
+      // if (this.isWinner()) {
+      //   this.gameOver()
+      //   return
+      // }
 
       this.switchPlayer()
 
@@ -185,10 +185,10 @@ class Game {
 
       this.showPlayerPieces()
 
-      if (this.isWinner()) {
-        this.gameOver()
-        return
-      }
+      // if (this.isWinner()) {
+      //   this.gameOver()
+      //   return
+      // }
 
       if (this.totalPiecesPlaced < 18) {
         addPlacePieceListener()
@@ -211,6 +211,12 @@ class Game {
     } else {
       this.currentPlayer = this.players[0]
     }
+
+    if (this.isWinner()) {
+      this.gameOver()
+      return
+    }
+
     this.renderGame()
     this.promptPlayer("turn")
   }
@@ -258,11 +264,35 @@ class Game {
       })
     })
 
-    if ((twoPiecesLeft || noMoves) && myGame.totalPiecesPlaced >= 18) {
+    if ((twoPiecesLeft) && myGame.totalPiecesPlaced >= 18) {
+      return true
+    } else if (noMoves && myGame.totalPiecesPlaced >= 18) {
+      if (this.currentPlayer === this.players[0]) {
+        this.currentPlayer = this.players[1]
+      } else {
+        this.currentPlayer = this.players[0]
+      }
       return true
     } else {
       return false
     }
+  }
+
+  hasNoMoves(playerName) {
+    let playersPieces = []
+    for (let node in this.currentStatus) {
+      if (this.currentStatus[node] === this.playerName) {
+        currentPlayersPieces.push(node)
+      }
+    }
+
+    let noMoves = !playersPieces.some(piece => {
+      return ADJACENT_COMBINATIONS[piece].some(adjacentNode => {
+        return this.currentStatus[adjacentNode] === null
+      })
+    })
+
+    return noMoves
   }
 
   gameOver() {

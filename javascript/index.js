@@ -35,6 +35,7 @@ function startNewGame(gameData) {
   $('.game-page').show()
   myGame.showPlayerPieces()
   myGame.promptPlayer("turn")
+  myGame.renderGame()
 }
 
 function addPlacePieceListener() {
