@@ -269,23 +269,6 @@ class Game {
     }
   }
 
-  hasNoMoves(playerName) {
-    let playersPieces = []
-    for (let node in this.currentStatus) {
-      if (this.currentStatus[node] === this.playerName) {
-        currentPlayersPieces.push(node)
-      }
-    }
-
-    let noMoves = !playersPieces.some(piece => {
-      return ADJACENT_COMBINATIONS[piece].some(adjacentNode => {
-        return this.currentStatus[adjacentNode] === null
-      })
-    })
-
-    return noMoves
-  }
-
   gameOver() {
     $('.game-page').hide()
     $('.winner-page .winner-message').html(`<div class='winner'>${this.currentPlayer.name} wins!</div>`)
