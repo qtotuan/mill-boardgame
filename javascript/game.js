@@ -243,12 +243,13 @@ class Game {
         $(this).removeClass("selected-mill")
       })
     })
+    $('.messages').removeClass('blink-messages')
     $('.messages').addClass('blink-messages')
   }
 
   isWinner() {
     let twoPiecesLeft = this.players.some(player => {
-      return player.capturedPieces >= 7
+      return player.capturedPieces >= 2
     })
 
     let currentPlayersPieces = []
