@@ -68,11 +68,6 @@ class Game {
 
     if (this.currentStatus[nodeId] === null) {
       let piece = new Piece(this.currentPlayer, nodeId)
-      if (this.currentPlayer === this.players[0]) {
-        $(`#${nodeId}`).addClass('player-1')
-      } else {
-        $(`#${nodeId}`).addClass('player-2')
-      }
       this.currentStatus[nodeId] = this.currentPlayer.name
       updateGame(this, this.renderGame.bind(this))
       this.totalPiecesPlaced++
@@ -181,7 +176,6 @@ class Game {
       this.currentStatus[nodeId] = null
       updateGame(this, this.renderGame.bind(this))
       this.currentPlayer.capturedPieces++
-      $(`#${nodeId}`).removeClass("player-1 player-2")
 
       this.showPlayerPieces()
 
@@ -239,9 +233,6 @@ class Game {
   blinkMill(combination) {
     combination.forEach( nodeId => {
       $(`#${nodeId}`).addClass('selected-mill')
-      $(`#${nodeId}`).on("webkitAnimationEnd oanimationend msAnimationEnd animationend", function() {
-        $(this).removeClass("selected-mill")
-      })
     })
     $('.messages').removeClass('blink-messages')
     $('.messages').addClass('blink-messages')
@@ -249,7 +240,7 @@ class Game {
 
   isWinner() {
     let twoPiecesLeft = this.players.some(player => {
-      return player.capturedPieces >= 2
+      return player.capturedPieces >= 7
     })
 
     let currentPlayersPieces = []

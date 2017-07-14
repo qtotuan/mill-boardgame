@@ -8,6 +8,9 @@ $(function() {
   $('#cancel').on('click', function (event) {
     myGame.cancelMovePiece()
   })
+  $(`.node`).on("webkitAnimationEnd oanimationend msAnimationEnd animationend", function() {
+    $(this).removeClass("selected-mill")
+  })
   $('#cancel').hide()
   addPlayAgainListener()
 })
