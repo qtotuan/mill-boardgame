@@ -238,9 +238,11 @@ class Game {
   }
 
   isWinner() {
-    let twoPiecesLeft = this.players.some(player => {
-      return player.capturedPieces >= 7
-    })
+    // let twoPiecesLeft = this.players.some(player => {
+    //   return player.capturedPieces >= 7
+    // })
+
+    let twoPiecesLeft = this.currentPlayer.capturedPieces >= 7
 
     let currentPlayersPieces = []
     for (let node in this.currentStatus) {
