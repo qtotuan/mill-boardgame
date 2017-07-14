@@ -3,17 +3,27 @@ let player1Name
 let player2Name
 
 $(function() {
+  addAnimationListeners()
   $('button[name="new-game"]').on('click', createNewGame)
   addPlacePieceListener()
   $('#cancel').on('click', function (event) {
     myGame.cancelMovePiece()
   })
-  $(`.node`).on("webkitAnimationEnd oanimationend msAnimationEnd animationend", function() {
-    $(this).removeClass("selected-mill")
-  })
   $('#cancel').hide()
   addPlayAgainListener()
 })
+
+function addAnimationListeners() {
+  $(`.node`).on("webkitAnimationEnd oanimationend msAnimationEnd animationend", function(e) {
+    $(this).removeClass("selected-mill")
+  })
+  $(`.messages`).on("webkitAnimationEnd oanimationend msAnimationEnd animationend", function(e) {
+    $(this).removeClass("blink-messages")
+  })
+  $(`.messages`).on("webkitAnimationEnd oanimationend msAnimationEnd animationend", '.message-content', function(e) {
+    e.stopPropagation()
+  })
+}
 
 function createNewGame() {
   player1Name = $('input[name="player-1-name"]').val()

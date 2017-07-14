@@ -234,7 +234,6 @@ class Game {
     combination.forEach( nodeId => {
       $(`#${nodeId}`).addClass('selected-mill')
     })
-    $('.messages').removeClass('blink-messages')
     $('.messages').addClass('blink-messages')
   }
 
@@ -295,8 +294,6 @@ class Game {
   }
 
   playAgain() {
-    $('.node').removeClass('player-1 player-2')
-    $('.messages').removeClass('blink-messages')
     $('#cancel').hide()
     removeListeners()
     addPlacePieceListener()
