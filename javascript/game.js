@@ -84,10 +84,6 @@ class Game {
 
       this.switchPlayer()
 
-      // if (this.isWinner()) {
-      //   this.gameOver()
-      // }
-
       console.log("Current Player is: " + this.currentPlayer.name)
 
       if (this.totalPiecesPlaced >= 18) {
@@ -129,12 +125,7 @@ class Game {
     if (ADJACENT_COMBINATIONS[this.selectedPiece].includes(nodeId) && this.currentStatus[nodeId] === null) {
       // remove color from selected field and update current status
       console.log("Correct adjacent piece selected!");
-      // $(`#${this.selectedPiece}`).removeClass(this.findPlayerClass(this.currentPlayer))
-      // $(`#${this.selectedPiece}`).removeClass('selected')
-      console.log("Should have removed class from old place");
       this.currentStatus[this.selectedPiece] = null
-      // add class to new node (nodeId)
-      // $(`#${nodeId}`).addClass(this.findPlayerClass(this.currentPlayer))
       // update currentStatus
       this.currentStatus[nodeId] = this.currentPlayer.name
       updateGame(this, this.renderGame.bind(this))
@@ -146,11 +137,6 @@ class Game {
         addCapturePieceListener()
         return
       }
-
-      // if (this.isWinner()) {
-      //   this.gameOver()
-      //   return
-      // }
 
       this.switchPlayer()
 
