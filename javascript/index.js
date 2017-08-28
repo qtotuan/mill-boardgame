@@ -1,13 +1,10 @@
-let myGame = new Game(123)
-let board = new Board(myGame.id)
-let player1 = new Player("Pat")
-let player2 = new Player("Quynh")
-myGame.players.push(player1, player2)
-myGame.currentPlayer = player1
+let myGame
+let player1Name
+let player2Name
 
 $(function() {
-  myGame.showPlayerPieces()
-  myGame.promptPlayer("turn")
+  addAnimationListeners()
+  $('button[name="new-game"]').on('click', createNewGame)
   addPlacePieceListener()
   $('#cancel').on('click', function (event) {
     myGame.cancelMovePiece()
@@ -15,6 +12,44 @@ $(function() {
   $('#cancel').hide()
   addPlayAgainListener()
 })
+
+function addAnimationListeners() {
+  $(`.node`).on("webkitAnimationEnd oanimationend msAnimationEnd animationend", function(e) {
+    $(this).removeClass("selected-mill")
+  })
+  $(`.messages`).on("webkitAnimationEnd oanimationend msAnimationEnd animationend", function(e) {
+    $(this).removeClass("blink-messages")
+  })
+  $(`.messages`).on("webkitAnimationEnd oanimationend msAnimationEnd animationend", '.message-content', function(e) {
+    e.stopPropagation()
+  })
+}
+
+function createNewGame() {
+  player1Name = $('input[name="player-1-name"]').val()
+  player2Name = $('input[name="player-2-name"]').val()
+  if (player1Name == "" || player2Name == "") {
+    alert('Player names cannot be blank!')
+    return
+  } else if (player1Name == player2Name) {
+    alert('Player names must be different!')
+    return
+  }
+  startNewGame()
+}
+
+function startNewGame(gameData) {
+  myGame = new Game(gameData)
+  let player1 = new Player(player1Name)
+  let player2 = new Player(player2Name)
+  myGame.players.push(player1, player2)
+  myGame.currentPlayer = player1
+  $('.start-page').hide()
+  $('.game-page').show()
+  myGame.showPlayerPieces()
+  myGame.promptPlayer("turn")
+  myGame.renderGame()
+}
 
 function addPlacePieceListener() {
     removeListeners()
@@ -49,7 +84,7 @@ function removeListeners() {
 }
 
 function addPlayAgainListener() {
-  $('.buttons').on("click", ".play-again", function (event) {
+  $('.winner-page').on("click", ".play-again", function (event) {
     myGame.playAgain()
   })
 }

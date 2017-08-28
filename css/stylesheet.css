@@ -4,6 +4,14 @@ body {
   min-width: 750px;
 }
 
+.player-names-input {
+  margin-bottom: 15px;
+}
+
+.name-input {
+  margin-bottom: 10px;
+}
+
 .winner {
   font-size: 50px;
   margin-top: 10%;
