@@ -35,7 +35,7 @@ function createNewGame() {
     alert('Player names must be different!')
     return
   }
-  createGame(startNewGame)
+  startNewGame()
 }
 
 function startNewGame(gameData) {

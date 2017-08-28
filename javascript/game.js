@@ -1,6 +1,5 @@
 class Game {
   constructor(gameData) {
-    this.id = gameData.id
     this.players = []
     this.totalPiecesPlaced = 0
     this.selectedPiece
@@ -69,13 +68,13 @@ class Game {
     if (this.currentStatus[nodeId] === null) {
       let piece = new Piece(this.currentPlayer, nodeId)
       this.currentStatus[nodeId] = this.currentPlayer.name
-      updateGame(this, this.renderGame.bind(this))
       this.totalPiecesPlaced++
       this.currentPlayer.piecesLeftToPlace--
 
       this.showPlayerPieces()
 
       if (this.isMill(nodeId)) {
+        this.renderGame()
         this.promptPlayer("mill success")
         console.log('Entering capturePiece mode');
         addCapturePieceListener()
@@ -128,7 +127,6 @@ class Game {
       this.currentStatus[this.selectedPiece] = null
       // update currentStatus
       this.currentStatus[nodeId] = this.currentPlayer.name
-      updateGame(this, this.renderGame.bind(this))
       if (this.isMill(nodeId)) {
         $('#cancel').hide()
         this.promptPlayer("mill success")
@@ -160,15 +158,9 @@ class Game {
   capturePiece(nodeId) {
     if (this.currentStatus[nodeId] != this.currentPlayer.name && !this.isMill(nodeId) && this.currentStatus[nodeId] != null) {
       this.currentStatus[nodeId] = null
-      updateGame(this, this.renderGame.bind(this))
       this.currentPlayer.capturedPieces++
 
       this.showPlayerPieces()
-
-      // if (this.isWinner()) {
-      //   this.gameOver()
-      //   return
-      // }
 
       if (this.totalPiecesPlaced < 18) {
         addPlacePieceListener()
@@ -224,9 +216,6 @@ class Game {
   }
 
   isWinner() {
-    // let twoPiecesLeft = this.players.some(player => {
-    //   return player.capturedPieces >= 7
-    // })
 
     let twoPiecesLeft = this.currentPlayer.capturedPieces >= 7
 
