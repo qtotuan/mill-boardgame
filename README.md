@@ -2,6 +2,8 @@
 
 ## It is Tic Tac Toe on steroids!
 
+Demo: https://mill-game.herokuapp.com/
+
 This boardgame was built using only Javascript, HTML/CSS, jQuery.
 
 Mill is one of the oldest board games and known in Europe by different names: Nine Men Morris, Mühle, Molenspel and Merrelles.
