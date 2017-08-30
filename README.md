@@ -17,5 +17,6 @@ In every phase, you can capture if you make three in a row (horizontal or vertic
 If you form a mill, you must capture an opposing stone of your choice 
 (except when this stone is part of a mill and your opponent has other stones which are not part of a mill).
 
-For more detailed rules:
+Tutorials on how to play:
 https://www.yourturnmyturn.com/rules/mill.php
+https://www.youtube.com/watch?v=zvbIKOHIkRE&t=3s
